@@ -1,0 +1,16 @@
+* {
+    font-family: Georgia, serif;
+}
+h1, h2, h3 {
+    font-family: 'Courier New', Courier, monospace;
+    color: blue;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td, th {
+    padding: 5px;
+    text-align: center;
+}
