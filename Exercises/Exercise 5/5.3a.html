@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            5.3a
+        </title>
+    </head>
+
+    <body>
+        <div id="line1"></div>
+        <div id="line2"></div>
+        <div id="line3"></div>
+        <div id="line4"></div>
+
+        <script>
+            let student = {id: "123456", firstname:"John", lastname:"Doe", age: 48};
+
+            const line1 = document.getElementById('line1');
+            const line2 = document.getElementById('line2');
+            const line3 = document.getElementById('line3');
+            const line4 = document.getElementById('line4');
+
+            line1.innerHTML = 'id = ' + student.id;
+            line2.innerHTML = 'firstname = ' + student.firstname;
+            line3.innerHTML = 'lastname = ' + student.lastname;
+            line4.innerHTML = 'age = ' + student.age;
+        </script>
+    </body>
+</html>

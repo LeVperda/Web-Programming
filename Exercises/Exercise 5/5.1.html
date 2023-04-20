@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="5.1.css" rel="stylesheet">
+        <title>
+            5.1
+        </title>
+    </head>
+
+    <body>
+        <div class="header"></div>
+            <header>
+                <h1>Testing how to change the text and style of an element on the page</h1>
+            </header>
+        </div>
+
+        <div id="name">Mickey Mouse</div>
+
+        <!--buttons-->
+
+        <div id="buttons">
+            <button onclick="changeName()">Change name!</button>
+            <button onclick="changeColor()">Change color!</button>
+            <button onclick="back2Oname()">Back to original name</button>
+            <button onclick="back2Ocolor()">Back to original color</button>
+            <button onclick="back2Original()">Back to original</button>
+        </div>
+        
+        <!--script to work with the buttons-->
+
+        <script>
+
+            /* variables */
+            const name = document.getElementById('name');
+
+            const originalName = name.innerHTML;
+            const originalColor = name.style.backgroundColor;
+
+            /* functions */
+
+            function changeName() {
+                name.innerHTML = 'Donald Duck';
+            }
+
+            function changeColor() {
+                name.style.backgroundColor = 'red';
+            }
+
+            function back2Oname() {
+                name.innerHTML = originalName;
+            }
+
+            function back2Ocolor() {
+                name.style.backgroundColor = originalColor;
+            }
+
+            function back2Original() {
+                name.innerHTML = originalName;
+                name.style.backgroundColor = originalColor;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            5.3a
+        </title>
+    </head>
+
+    <body>
+        <ul id="list"></ul>
+
+        <script>
+            let student = {id: "123456", firstname:"John", lastname:"Doe", age: 48};
+            const list = document.getElementById('list');
+
+            for (const info in student) {
+                const li = document.createElement('li');
+                li.textContent = `${info}= ${student[info]}`;
+                list.appendChild(li);
+            }
+        </script>
+    </body>
+</html>

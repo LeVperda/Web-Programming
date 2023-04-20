@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="5.4.css" rel="stylesheet">
+        <title>
+            5.4
+        </title>
+    </head>
+
+    <body>
+        <div class="header">
+            <header>
+                <h1>Postage fee calculator</h1>
+            </header>
+        </div>
+
+        <!--Inputs-->
+
+        <div class="calculator">
+            <select id="type">
+                <option value="letter">Letter</option>
+                <option value="package">Package</option>
+            </select>
+
+            <label for="g">weigth in grams</label>
+            <input type="number" id="g" name="g">
+
+            <div id="button">
+                <button onclick="calculate()">SHOW FEE</button>
+            </div>
+
+            <div id="fee"></div>
+
+            <!--Functions-->
+
+            <script>
+
+                /* This function gets the price in cents */
+                function price(weigth) {
+                    if (type.value === 'letter') {
+                        let base = 50;
+
+                        if (weigth <= 200) {
+                            return base;
+                        } else if (weigth > 200 && weigth <= 500) {
+                            return base + ((get100(weigth) - 2) * 4);
+                        } else {
+                            return base + (3 * 4) + ((get100(weigth) - 5) * 7);
+                        }
+
+                    } else {
+                        let base = 200;
+
+                        if (weigth <= 200) {
+                            return base;
+                        } else if (weigth > 200 && weigth <= 500) {
+                            return base + ((get100(weigth) - 2) * 8);
+                        } else {
+                            return base + (3 * 8) + ((get100(weigth) - 5) * 14);
+                        }
+                    }
+                }
+
+                /* Converter function, cents -> eur and cents */
+                function numToEur(weigth) {
+                    let number = price(weigth);
+
+                    if (number < 100) {
+                        let output = number + 'c';
+                        return output;
+                    } else {
+                        let cents = number % 100;
+                        let eur = Math.floor(number / 100);
+                        let output = eur + 'eur ' + cents + 'c';
+                        return output;
+                    }
+                }
+                
+                /* Support function to calculate the price, gets the number of 100s in a give number, rounding up */
+                function get100(weigth) {
+                    let g = Math.ceil(weigth / 100);
+                    return g;
+                }
+                
+                /* Main function */
+                function calculate() {
+                    let weigth = document.getElementById('g').value;
+                    let type = document.getElementById('type').value;
+                    const fee = document.getElementById('fee');
+
+                    if (weigth === '') {
+                        fee.innerHTML = 'Please give weigth';
+                    } else {
+                        fee.innerHTML = numToEur(weigth);
+                    }
+                }
+            </script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="5.2d.css" rel="stylesheet">
+        <title>
+            5.2d
+        </title>
+    </head>
+
+    <!--Input dates-->
+
+    <body>
+        <div id="input">
+            <label for="d1">DATE 1</label><br>
+            <input type="date" id="d1" name="d1"><br>
+
+            <label for="d2">DATE 2</label><br>
+            <input type="date" id="d2" name="d2"><br>
+        </div>
+
+        <div id="button">
+            <button onclick="calculate()">DIFFERENCE</button>
+        </div>
+
+        <div id="result"></div>
+
+        <script>            
+            function calculate() {
+                let d1v = document.getElementById("d1").value;
+                let d2v = document.getElementById("d2").value;
+
+                let d1 = new Date(d1v);
+                let d2 = new Date(d2v);
+
+                const result = document.getElementById("result");
+                
+                let difference = Math.abs(d2 - d1);
+                let days = Math.ceil(difference / (1000 * 60 * 60 * 24));
+
+                result.innerHTML = days + " Days"
+            }
+        </script>
+
+    </body>

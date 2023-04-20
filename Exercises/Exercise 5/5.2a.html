@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="5.2a.css" rel="stylesheet">
+        <title>
+            5.2a
+        </title>
+    </head>
+
+    <body>
+        <div class="header">
+            <header>
+                <h1>JavaScript variables, event handling and functions</h1>
+            </header>
+        </div>
+
+        <!--calculator inputs and button-->
+
+        <!--AFTER FINISHING THE CODE
+            I realize I did not have to use form, and basically made the job harder for myself-->
+
+        <div class="calculator">
+            
+            <form name="calculator">
+                <div id="instructions">
+                    Give the following values and count the sum.
+                </div>
+
+                <div id="numbers">
+                    <label for="x">x =</label>
+                    <input type="number" id="x" name="x"><br>
+                    <label for="y">y = </label>
+                    <input type="number" id="y" name="y"><br>           
+                </div>
+
+                <div id="button">
+                    <button onclick="sum(event)">x+y</button>
+                </div>
+
+                <div id="result">
+                    The value of x+y is:
+                </div>
+            </form>
+        </div>
+
+        <!--script for calculator-->
+
+        <script>
+            function sum(event) {
+                event.preventDefault();
+
+                let x = document.getElementById('x').value;
+                let y = document.getElementById('y').value;
+                const result = document.getElementById('result');
+
+                if (x === '' || y === '') {
+                    result.innerHTML = 'Please input both numbers'
+                } else {
+                    let xy = Number(x) + Number(y);
+                    result.innerHTML = 'The value of x+y is: ' + xy;
+                }
+            }
+        </script>
+    </body>
+</html>

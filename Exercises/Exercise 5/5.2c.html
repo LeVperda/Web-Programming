@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="5.2c.css" rel="stylesheet">
+        <title>
+            5.2c
+        </title>
+    </head>
+
+    <!--Input and button-->
+
+    <body>
+        <div id="input">
+            <label for="t">Give the temperature</label><br>
+            <input type="number" id="t" name="t">
+        </div>
+
+        <div id="button">
+            <button onclick="convert()">Weather Check</button>
+        </div>
+
+        <div id="result"></div>
+
+        <!--Script-->
+
+        <script>
+            function convert() {
+                let f = document.getElementById('t').value;
+                const result = document.getElementById('result');
+
+                if (f === '') {
+                    result.innerHTML = 'Please input a number'
+                } else if (-40 <= Number(f) && Number(f) <= -20) {
+                    result.innerHTML = 'Pretty cold'
+                } else if (-19 <= Number(f) && Number(f) <= -5) {
+                    result.innerHTML = 'Average winter day'
+                } else if (-4 <= Number(f) && Number(f) <= 5) {
+                    result.innerHTML = 'Mild'
+                } else if (6 <= Number(f) && Number(f) <= 15) {
+                    result.innerHTML = 'Not really warm yet'
+                } else if (16 <= Number(f) && Number(f) <= 25) {
+                    result.innerHTML = 'Warm'
+                } else if (26 <= Number(f) && Number(f) <= 40) {
+                    result.innerHTML = 'HOT'
+                } else {
+                    result.innerHTML = 'Temperature not supported, try again'
+                }
+
+                return false;
+            }
+        </script>
+    </body>
+</html>
