@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            6.1
+        </title>
+    </head>
+
+    <body>
+        <header>
+            <h2>
+                Products
+            </h2>
+        </header>
+
+        <!--container for the array elements-->
+        <text id="list"></text>
+
+        <script>
+            var products = ["milk", "coffee", "Juice", "Lemonade", "beer", "sour milk"];
+            var list = document.getElementById("list");
+
+            // loop through the array elements, adding them one by one
+            for (i=0; i < products.length; i++) {
+
+                var product = products[i];
+                list.innerHTML += product + "<br>";
+            }
+        </script>
+    </body>
+</html>

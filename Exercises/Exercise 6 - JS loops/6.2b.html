@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link  href="6.2.CSS" rel="stylesheet"> 
+        <title>
+            6.2b
+        </title>
+    </head>
+
+    <body>
+        <header>
+            <h2>
+                Products
+            </h2>
+        </header>
+
+        <!--container for the array elements-->
+        <table id="list"></table>
+        
+        <button onclick="sortTable()">SORT</button>
+
+        <script>
+            var products = ["milk", "coffee", "Juice", "Lemonade", "beer", "sour milk"];
+            var table = document.getElementById("list");
+
+            
+
+            // loop through the array elements, adding them one by one
+            for (i=0; i < products.length; i++) {
+
+                table.innerHTML += `<tr><td>${products[i]}</td></tr>`;
+            }
+
+            // sort function, case insensitive
+            function sortTable() {
+
+                product = products.sort((a, b) => a.toLocaleLowerCase().localeCompare(b.toLocaleLowerCase()));
+                table.innerHTML = "";
+
+                for (i=0; i < products.length; i++) {
+
+                    table.innerHTML += `<tr><td>${products[i]}</td></tr>`;
+                }
+            }
+        </script>
+    </body>
+</html>

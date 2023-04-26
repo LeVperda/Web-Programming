@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link  href="6.2.CSS" rel="stylesheet"> 
+        <title>
+            6.2a
+        </title>
+    </head>
+
+    <body>
+        <header>
+            <h2>
+                Products
+            </h2>
+        </header>
+
+        <!--container for the array elements-->
+        <table id="list"></table>
+
+        <script>
+            var products = ["milk", "coffee", "Juice", "Lemonade", "beer", "sour milk"];
+            var table = document.getElementById("list");
+
+            
+
+            // loop through the array elements, adding them one by one
+            for (i=0; i < products.length; i++) {
+
+                table.innerHTML += `<tr><td>${products[i]}</td></tr>`;
+            }
+        </script>
+    </body>
+</html>

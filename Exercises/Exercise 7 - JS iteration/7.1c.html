@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link  href="7.CSS" rel="stylesheet">
+        <title>
+            7.1c
+        </title>
+    </head>
+
+    <body>
+        <header>
+            <h2>
+                Products
+            </h2>
+        </header>
+
+        <!--container for the array elements-->
+        <table id="list"></table>
+
+        <script>
+            var products = ["milk", "coffee", "juice", "lemonade", "beer", "sour milk"];
+            var table = document.getElementById("list");
+
+            products = products.map((x, index) => index + 1 + '. ' + x)
+
+            products.forEach(x => table.innerHTML += `<tr><td>${x}</td></tr>`)
+        </script>
+    </body>
+</html>

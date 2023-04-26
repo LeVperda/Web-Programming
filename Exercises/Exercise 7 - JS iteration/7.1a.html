@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link  href="7.CSS" rel="stylesheet">
+        <title>
+            7.1a
+        </title>
+    </head>
+
+    <body>
+        <header>
+            <h2>
+                Products
+            </h2>
+        </header>
+
+        <!--container for the array elements-->
+        <text id="list"></text>
+
+        <script>
+            var products = ["milk", "coffee", "juice", "lemonade", "beer", "sour milk"];
+            var list = document.getElementById("list");
+
+            products.forEach(x => list.innerHTML += x + "<br>")
+        </script>
+    </body>
+</html>

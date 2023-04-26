@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link  href="7.css" rel="stylesheet"> 
+        <title>
+            7.3a+b
+        </title>
+    </head>
+
+    <body>
+        <header>
+            <h2>
+                Products
+            </h2>
+        </header>
+
+        <!--container for the array elements-->
+        <table id="list">
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Overall Quality</th>
+            <th>Quality average</th>
+            <th>Wiki</th>
+        </table>
+
+        <script>
+                var cars=[
+                {
+                "manufacturer":"Porsche",
+                "model": "911",
+                "price": 135000,
+                "quality": [
+                    {
+                        "name":"overall",  
+                        "rating":3  
+                    },
+                    {
+                        "name":"mechanical",  
+                        "rating":4  
+                    },
+                    {  
+                        "name":"powertrain",  
+                        "rating":2  
+                    },
+                    {  
+                        "name":"body",  
+                        "rating":4  
+                    },{  
+                        "name":"interior",  
+                        "rating":3  
+                    },
+                    {  
+                        "name":"accessories",  
+                        "rating":2  
+                    }
+                ],  
+                "wiki":"http://en.wikipedia.org/wiki/Porsche_997"  
+                },
+                {  
+                "manufacturer":"Nissan",  
+                "model":"GT-R",  
+                "price":80000,  
+                "quality":[
+                {  
+                    "name":"overall",  
+                    "rating":2  
+                },  
+                {
+                    "name":"mechanical",  
+                    "rating":3  
+                },  
+                {
+                    "name":"powertrain",  
+                    "rating":5  
+                },  
+                {
+                    "name":"body",  
+                    "rating":4  
+                },  
+                {
+                    "name":"interior",  
+                    "rating":2  
+                },  
+                {
+                    "name":"accessories",  
+                    "rating":2  
+                }  
+                ],  
+                "wiki":"http://en.wikipedia.org/wiki/Nissan_Gt-r"  
+                },
+                {  
+                "manufacturer":"BMW",  
+                "model":"M3",  
+                "price":60500,  
+                "quality":[
+                {
+                    "name":"overall",  
+                    "rating":3  
+                },  
+                {
+                    "name":"mechanical",  
+                    "rating":5  
+                },  
+                {
+                    "name":"powertrain",  
+                    "rating":3  
+                },  
+                {
+                    "name":"body",  
+                    "rating":4  
+                },  
+                {
+                    "name":"interior",  
+                    "rating":5  
+                },  
+                {
+                    "name":"accessories",  
+                    "rating":3  
+                }  
+                ],  
+                "wiki":"http://en.wikipedia.org/wiki/Bmw_m3"  
+                },
+                {  
+                "manufacturer":"Audi",  
+                "model":"S5",  
+                "price":53000,  
+                "quality":[
+                {
+                    "name":"overall",  
+                    "rating":4  
+                },  
+                {
+                    "name":"mechanical",  
+                    "rating":1  
+                },  
+                {
+                    "name":"powertrain",  
+                    "rating":1  
+                },  
+                {
+                    "name":"body",  
+                    "rating":4  
+                },  
+                {
+                    "name":"interior",  
+                    "rating":1  
+                },  
+                {
+                    "name":"accessories",  
+                    "rating":5  
+                }  
+                ],  
+                "wiki":"http://en.wikipedia.org/wiki/Audi_S5#Audi_S5"  
+                }
+                ]  
+
+            var table = document.getElementById("list");
+
+            function avgQuality(x) {
+                
+                var avg = 0;
+
+                for (i = 1; i < 6; i++) {
+                    avg += x.quality[i].rating;
+                }
+
+                avg = avg / 5;
+                return avg;
+            }
+
+            cars.forEach(x => table.innerHTML += `<tr><td>${x.manufacturer}</td><td>${x.model}</td><td>${x.price}</td><td>${x.quality[0].rating}</td><td>${avgQuality(x)}</td><td><a href=${x.wiki}>${x.wiki}</a></td></tr>`)
+        </script>
+    </body>
+</html>
