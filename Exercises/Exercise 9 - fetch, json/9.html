@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="9.css" rel="stylesheet">
+    
+        <title>Exercise 9</title>
+    </head>
+    
+    <body>
+        <!--city selector-->
+        <select id="citySelect">
+            <option value="Helsinki">Helsinki</option>
+            <option value="Paris">Paris</option>
+            <option value="London">London</option>
+            <option value="Madrid">Madrid</option>
+            <option value="Stockholm">Stockholm</option>
+            <option value="Rovaniemi">Rovaniemi</option>
+            <option value="Kuopio">Kuopio</option>
+        </select>
+        <button onclick="showWeather()">SHOW</button>
+        <br><ul id="result">
+            <li id="temperature"></li>
+            <li id="humidity"></li>
+            <li id="wind"></li>
+            <li id="cloud"></li>
+        </ul>
+
+        <script>
+            function showWeather() {
+                // API has changed since the task has been published, conversion to lat/lon is needed
+                var city = document.getElementById("citySelect").value;
+
+                let url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=8db5b402b99e951cccca55bd855f4590`
+
+                fetch(url)
+                    .then(Response => Response.json())
+                    .then(data => {
+                        var lat = data[0].lat;
+                        var lon = data[0].lon;
+
+                        let newurl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=8db5b402b99e951cccca55bd855f4590&land=en`
+
+                        fetch(newurl)
+                            .then(Response => Response.json())
+                            .then(newdata => {
+                                var temp = newdata.main.temp;
+                                var hum = newdata.main.humidity;
+                                var wind = newdata.wind.speed;
+                                var cloud = newdata.weather[0].description;
+
+                                console.log(temp, hum, wind, cloud)
+
+                                document.getElementById("temperature").innerHTML = `Temparature: ${temp} deg C`;
+                                document.getElementById("humidity").innerHTML = `Humidity: ${hum}%`;
+                                document.getElementById("wind").innerHTML = `Wind: ${wind} m/s`;
+                                document.getElementById("cloud").innerHTML = `Description: ${cloud}`;
+                            })
+                    })                       
+            }
+        </script>
+    </body>
+</html>
+

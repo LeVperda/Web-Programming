@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="8.css" rel="stylesheet">
+
+        <title>8.1</title>
+
+        <script src="students_json.js"></script>
+    </head>
+
+    <body>
+        <!--table container-->
+        <table id="students"></table>
+
+        <script>
+            console.log(students);
+
+            // table variable
+            var table = "<th>ID</th><th>First Name</th><th>Last name</th><th>Gender</th><th>Study Field</th><th>Address</th><th>Email</th><th>Phone</th><th>Age</th>"
+
+            // populate table
+            for (i = 0; i < students.length; i++) {
+                table += `<tr><td>${students[i].student_id}</td><td>${students[i].firstname}</td><td>${students[i].lastname}</td><td>${students[i].gender}</td><td>${students[i].study_field}</td><td>${students[i].address}</td><td>${students[i].email}</td><td>${students[i].phone}</td><td>${students[i].age}</td></tr>`;
+            }
+
+            // update table container
+            document.getElementById("students").innerHTML = table;
+        </script>
+    </body>
+</html>

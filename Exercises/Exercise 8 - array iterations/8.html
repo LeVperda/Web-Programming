@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="8.css" rel="stylesheet">
+
+        <title>Exercise 8</title>
+
+        <script src="students_json.js"></script>
+    </head>
+
+    <body>
+        Choose filtering option<br><br>
+
+        <!--sex filter buttons-->
+        All <input type="radio" id="all" value="all" name="sex" checked>
+        Men <input type="radio" id="men" value="male" name="sex">
+        Women <input type="radio" id="women" value="female" name="sex">
+
+        <!--study filter dropdown-->
+        <br><br>Choose study Programme
+        <select id="study_programme">
+            <option value="all">All</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Business">Business</option>
+            <option value="Art">Art</option>
+        </select>
+        
+        <!--table sort-->
+        <br><br>Choose sort order<br><br>
+        Alphabetical <input type="radio" id="alpha" value="alpha" name="sort">
+        Age <input type="radio" id="age" value="age" name="sort">
+
+        <!--table container-->
+        <table id="students"></table>
+
+        <script>
+            console.log(students);
+
+            createTable(students);
+
+            var studySelect = document.getElementById("study_programme");
+
+            // add event listeners
+            document.getElementsByName("sex").forEach(radio => radio.addEventListener('change', filterStudents));
+            document.getElementsByName("sort").forEach(radio => radio.addEventListener('change', filterStudents));
+            studySelect.addEventListener("change", filterStudents);
+
+            // get select value
+            function sexSelected() {
+                let rButtons = document.getElementsByName("sex");
+
+                for(i=0; i < rButtons.length; i++) {
+
+                    if (rButtons[i].checked == true) {
+
+                        return rButtons[i].value;
+                    }
+                }
+                return "all";
+            }
+            // get sort value
+            function sortSelected() {
+                var sortButtons = document.getElementsByName("sort");
+
+                for (i = 0; i < sortButtons.length; i++) {
+
+                    if (sortButtons[i].checked == true) {
+
+                        return sortButtons[i].value;
+                    }
+                }
+            }
+
+            // filter/sort the table
+            function filterStudents() {
+                var studentsFiltered = students
+                
+                // check gender filter
+                if (sexSelected() != "all") {
+
+                    studentsFiltered = studentsFiltered.filter((el) => el.gender == sexSelected());
+                }
+
+                // check study field filter
+                if (studySelect.value != "all") {
+
+                    studentsFiltered = studentsFiltered.filter((el) => el.study_field == studySelect.value);
+                }
+
+                // check sort order
+                if (sortSelected() == "alpha") {
+
+                    studentsFiltered.sort((a, b) => a.lastname.localeCompare(b.lastname));
+                } else if (sortSelected() == "age") {
+
+                    studentsFiltered.sort((a, b) => a.age - b.age);
+                }
+
+                // call create table function
+                createTable(studentsFiltered);
+            }
+
+            // create table
+            function createTable(x) {
+                // table variable
+                var table = "<th>ID</th><th>First Name</th><th>Last name</th><th>Gender</th><th>Study Field</th><th>Address</th><th>Email</th><th>Phone</th><th>Age</th><th>Credits</th>";
+
+                // populate table
+                for (i = 0; i < x.length; i++) {
+
+                    var totalCredits = x[i].courses_done.reduce((total, course) => total + course.credits, 0);
+
+                    table += `<tr><td>${x[i].student_id}</td><td>${x[i].firstname}</td><td>${x[i].lastname}</td><td>${x[i].gender}</td><td>${x[i].study_field}</td><td>${x[i].address}</td><td>${x[i].email}</td><td>${x[i].phone}</td><td>${x[i].age}</td><td>${totalCredits}</td></tr>`;
+                }
+
+                // update table container
+                document.getElementById("students").innerHTML = table;
+            }
+        </script>
+    </body>
+</html>
